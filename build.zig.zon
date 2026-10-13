@@ -3,6 +3,17 @@
     .fingerprint = 0xa8056307f510137b,
     .version = "0.0.1",
     .minimum_zig_version = "0.17.0",
-    .dependencies = .{},
+    .dependencies = .{
+        .lenore_resources = .{
+            .path = "../lenore-resources",
+        },
+        .lenore_scene = .{
+            .path = "../lenore-scene",
+        },
+        .zmath = .{
+            .url = "https://github.com/lenore-engine/zmath/archive/db8679b72e1d8e4a5f73d25b6d12c9274c6666d2.tar.gz",
+            .hash = "zmath-0.11.0-dev-G7WtzpIxAwBMYwVjSx2gyZ4eYpRcMKLQ5_7fxjHBcTor",
+        },
+    },
     .paths = .{ "build.zig", "build.zig.zon", "src", "tests", "LICENSE", "AUTHORS" },
 }

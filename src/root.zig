@@ -1,5 +1,7 @@
+const ballistics = @import("ballistics.zig");
 const action = @import("action.zig");
 const gait = @import("gait.zig");
+const handling = @import("handling.zig");
 const noise = @import("noise.zig");
 const recoil = @import("recoil.zig");
 const spring = @import("spring.zig");
@@ -15,6 +17,7 @@ pub const Lean = gait.Lean;
 
 pub const Aim = view.Aim;
 pub const Handheld = view.Handheld;
+pub const Drift = view.Handheld.Drift;
 pub const Shake = view.Shake;
 
 pub const FireMode = action.FireMode;
@@ -32,3 +35,18 @@ pub const Kick = recoil.Kick;
 pub const ViewOffset = recoil.ViewOffset;
 pub const WeaponOffset = recoil.WeaponOffset;
 pub const Recoil = recoil.Recoil;
+
+pub const Pose = handling.Pose;
+pub const HandlingProfile = handling.Profile;
+pub const Motion = handling.Motion;
+pub const Held = handling.Held;
+pub const Handling = handling.Handling;
+
+pub const Round = ballistics.Round;
+pub const Material = ballistics.Material;
+pub const Crossing = ballistics.Crossing;
+pub const Hit = ballistics.Hit;
+pub const Outcome = ballistics.Outcome;
+pub const resolve = ballistics.resolve;
+pub const crossBox = ballistics.crossBox;
+pub const scatter = ballistics.scatter;

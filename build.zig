@@ -4,8 +4,17 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
+    const resources = b.dependency("lenore_resources", .{ .target = target, .optimize = optimize });
+    const scene = b.dependency("lenore_scene", .{ .target = target, .optimize = optimize });
+    const zmath = b.dependency("zmath", .{}).module("root");
+
     const mod = b.addModule("lenore-fps", .{
         .root_source_file = b.path("src/root.zig"),
+        .imports = &.{
+            .{ .name = "lenore-resources", .module = resources.module("lenore-resources") },
+            .{ .name = "lenore-scene", .module = scene.module("lenore-scene") },
+            .{ .name = "zmath", .module = zmath },
+        },
         .target = target,
         .optimize = optimize,
     });
@@ -15,6 +24,9 @@ pub fn build(b: *std.Build) void {
             .root_source_file = testRoot(b, "tests"),
             .imports = &.{
                 .{ .name = "lenore-fps", .module = mod },
+                .{ .name = "lenore-resources", .module = resources.module("lenore-resources") },
+                .{ .name = "lenore-scene", .module = scene.module("lenore-scene") },
+                .{ .name = "zmath", .module = zmath },
             },
             .target = target,
             .optimize = optimize,
